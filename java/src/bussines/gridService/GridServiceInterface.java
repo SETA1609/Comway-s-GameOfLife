@@ -1,12 +1,10 @@
 package bussines.gridService;
 
-import dao.Grid;
-
 public interface GridServiceInterface {
 
     // default 5 generations
-    void getGrid();
+    void startDefaultSimulation();
     // with input
-    void getGridForANumberOfGenerations();
+    void startMultigenerationSimulation();
 
 }

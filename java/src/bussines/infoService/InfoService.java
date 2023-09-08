@@ -34,7 +34,6 @@ public class InfoService implements InfoServiceInterface {
                 "you can give a number of generations that would stat a simulation with n generations,",
                 "where n is the number of generations"
         };
-
         printInfo(allInfo);
     }
 

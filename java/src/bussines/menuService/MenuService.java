@@ -72,8 +72,8 @@ public class MenuService implements MenuServiceInterface {
         while (true) {
             String input = scanner.nextLine();
             switch (input) {
-                case "1", "default" -> gridServiceInterface.getGrid();
-                case "2", "generations" -> gridServiceInterface.getGridForANumberOfGenerations();
+                case "1", "default" -> gridServiceInterface.startDefaultSimulation();
+                case "2", "generations" -> gridServiceInterface.startMultigenerationSimulation();
                 case "3","info"-> infoServiceInterface.getGridInfo();
                 case "4", "return" -> {
                     return;
