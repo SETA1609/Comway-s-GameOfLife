@@ -1,5 +1,6 @@
 package bussines.infoService;
 
 public interface InfoServiceInterface {
-    void getInfo();
+    void getInputInfo();
+    void getGameOfLifeInfo();
 }

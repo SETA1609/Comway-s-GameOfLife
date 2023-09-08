@@ -41,12 +41,11 @@ public class MenuService implements MenuServiceInterface{
 
         switch (input) {
             case "1", "start" -> System.out.println("play game");
-            case "2", "info" -> infoServiceInterface.getInfo();
+            case "2", "info" -> infoServiceInterface.getGameOfLifeInfo();
             case "3", "close" -> setActive(false);
             default -> {
                 System.out.println("Invalid input, please try again.");
-
-                infoServiceInterface.getInfo();
+                infoServiceInterface.getInputInfo();
             }
         }
     }
