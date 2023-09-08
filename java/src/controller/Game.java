@@ -23,17 +23,17 @@ public class Game implements GameInterface {
     }
 
     @Override
-    public void starten() {
+    public void run() {
       do {
         menuServiceInterface.getMenu();
         if (!menuServiceInterface.isActive()){
-            enden();
+            close();
         }
       }while (isRunning);
     }
 
     @Override
-    public void enden() {
+    public void close() {
         setRunning(false);
     }
 }
