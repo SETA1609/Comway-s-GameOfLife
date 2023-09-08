@@ -1,14 +1,14 @@
 package bussines.infoService;
 
-public class InfoService implements InfoServiceInterface{
+public class InfoService implements InfoServiceInterface {
     @Override
     public void getInputInfo() {
-        String[] allInfo={
-                "Welcome to the information interface!",
-                "please used the the number you want to use as input or use:",
-                "start, info or close",
+        String[] allInfo = {
+                "Ups! Something just went wrong with your input :(",
+                "please use the the number you want to use as input or use ",
+                "the following words in lowercase: ",
         };
-       printInfo(allInfo);
+        printInfo(allInfo);
     }
 
     @Override
@@ -26,8 +26,20 @@ public class InfoService implements InfoServiceInterface{
         printInfo(allInfo);
     }
 
-    private void printInfo(String[] infoToPrint){
-        for (String info:infoToPrint) {
+    @Override
+    public void getGridInfo() {
+        String[] allInfo = {
+                "Welcome to the simulation menu",
+                "you can select to do a default simulation with 5 generations or",
+                "you can give a number of generations that would stat a simulation with n generations,",
+                "where n is the number of generations"
+        };
+
+        printInfo(allInfo);
+    }
+
+    private void printInfo(String[] infoToPrint) {
+        for (String info : infoToPrint) {
             System.out.println(info);
         }
     }

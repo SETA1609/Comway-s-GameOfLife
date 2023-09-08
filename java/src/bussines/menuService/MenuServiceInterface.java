@@ -5,4 +5,5 @@ public interface MenuServiceInterface {
     void getMenu();
     boolean isActive();
 
+
 }

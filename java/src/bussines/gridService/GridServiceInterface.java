@@ -4,7 +4,9 @@ import dao.Grid;
 
 public interface GridServiceInterface {
 
-    Grid makeGrid(int cols, int rows);
-    void getGridForANumberOfGenerations(int generations);
+    // default 5 generations
+    void getGrid();
+    // with input
+    void getGridForANumberOfGenerations();
 
 }

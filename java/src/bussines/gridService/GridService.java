@@ -3,13 +3,14 @@ package bussines.gridService;
 import dao.Grid;
 
 public class GridService implements GridServiceInterface{
+
     @Override
-    public Grid makeGrid(int cols, int rows) {
-        return null;
+    public void getGrid() {
+
     }
 
     @Override
-    public void getGridForANumberOfGenerations(int generations) {
+    public void getGridForANumberOfGenerations() {
 
     }
 }
