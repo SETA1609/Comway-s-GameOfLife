@@ -35,14 +35,39 @@ public class GridService implements GridServiceInterface {
 
         for (int i = 0; i < oldGrid.getCols(); i++) {
             for (int j = 0; j < oldGrid.getRows(); j++) {
-                if (){
 
+                if (i==0||i== oldGrid.getCols()-1|| j==0 ||j== oldGrid.getRows()-1){
+                    newGrid.getCellGrid()[i][j]=oldGrid.getCellGrid()[i][j];
+                }else {
+                    checkSum= countNeighbours(oldGrid.getCellGrid(),i,j);
+
+                    if (!oldGrid.getCellGrid()[i][j].isAlive() && checkSum==3){
+                        newGrid.getCellGrid()[i][j]=new Cell(true);
+                    } else if (oldGrid.getCellGrid()[i][j].isAlive()&&(checkSum<2||checkSum>3)) {
+                        newGrid.getCellGrid()[i][j]=new Cell(false);
+                    }else {
+                        newGrid.getCellGrid()[i][j]=oldGrid.getCellGrid()[i][j];
+                    }
                 }
+
             }
         }
 
         return newGrid;
     }
+
+    private int countNeighbours(Cell[][] cellGrid, int col, int row) {
+        int checkSum=0;
+
+        for (int i = -1; i < 2 ; i++) {
+            for (int j = -1; j < 2 ; j++) {
+                checkSum+= cellGrid[i+col][j+row].isAlive()?1:0;
+            }
+        }
+        checkSum-=cellGrid[col][row].isAlive()?1:0;
+        return checkSum;
+    }
+
 
     @Override
     public void startDefaultSimulation() {
