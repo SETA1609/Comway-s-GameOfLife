@@ -65,11 +65,12 @@ public class MenuService implements MenuServiceInterface {
                 "3) Information regarding this menu.",
                 "4) Return to main menu"
         };
-        printOptions(options);
+
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            printOptions(options);
             String input = scanner.nextLine();
             switch (input) {
                 case "1", "default" -> gridServiceInterface.startDefaultSimulation();

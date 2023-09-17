@@ -2,34 +2,26 @@ package dao;
 
 public class Grid {
 
-    private int cols;
     private int rows;
+    private int cols;
     private Cell[][] cellGrid;
 
     public Grid() {
-        setCols(0);
         setRows(0);
-        setCellGrid(new Cell[cols][rows]);
+        setCols(0);
+        setCellGrid(new Cell[rows][cols]);
     }
 
-    public Grid(int cols, int rows) {
-        setCols(cols);
+    public Grid(int rows, int cols) {
         setRows(rows);
-        setCellGrid(new Cell[this.cols][this.rows]);
+        setCols(cols);
+        setCellGrid(new Cell[this.rows][this.cols]);
     }
 
     public Grid(Cell[][] cellGrid) {
         setCellGrid(cellGrid);
-        setRows(cellGrid.length);
-        setCols(cellGrid[1].length);
-    }
-
-    public int getCols() {
-        return cols;
-    }
-
-    public void setCols(int cols) {
-        this.cols = cols;
+        setCols(cellGrid.length);
+        setRows(cellGrid[1].length);
     }
 
     public int getRows() {
@@ -40,6 +32,14 @@ public class Grid {
         this.rows = rows;
     }
 
+    public int getCols() {
+        return cols;
+    }
+
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+
     public Cell[][] getCellGrid() {
         return cellGrid;
     }
@@ -47,4 +47,7 @@ public class Grid {
     public void setCellGrid(Cell[][] cellGrid) {
         this.cellGrid = cellGrid;
     }
+
+
+
 }
