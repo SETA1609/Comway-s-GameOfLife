@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Comway-s-GameOfLife.iml" filepath="$PROJECT_DIR$/.idea/Comway-s-GameOfLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javascript.iml" filepath="$PROJECT_DIR$/javascript.iml" />
     </modules>
   </component>
 </project>
