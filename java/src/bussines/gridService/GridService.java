@@ -5,6 +5,8 @@ import bussines.cellService.CellServiceInterface;
 import dao.Cell;
 import dao.Grid;
 
+import java.util.Scanner;
+
 public class GridService implements GridServiceInterface {
 
     private Grid currentGrid;
@@ -86,6 +88,25 @@ public class GridService implements GridServiceInterface {
 
     @Override
     public void startMultigenerationSimulation() {
+
+        System.out.println("Please enter the number of generations: ");
+        Scanner scanner= new Scanner(System.in);
+
+        String generations= scanner.nextLine();
+
+        try {
+            print(currentGrid);
+            int numberOfGenerations= Integer.parseInt(generations);
+            for (int i = 0; i < numberOfGenerations ; i++) {
+                getNextGeneration();
+                print(currentGrid);
+            }
+        }catch (Exception e){
+            throw new RuntimeException("Please enter a whole number");
+        }
+
+        print(currentGrid);
+
 
     }
 
