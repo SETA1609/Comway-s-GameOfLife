@@ -7,10 +7,12 @@ import bussines.menuService.MenuServiceInterface;
 
 public class Game implements GameInterface {
     private boolean isRunning;
-    private MenuServiceInterface menuServiceInterface = new MenuService();
-    private LogServiceInterface logServiceInterface = new LogService();
+    private final MenuServiceInterface menuServiceInterface ;
+    private final LogServiceInterface logServiceInterface ;
 
     public Game() {
+        menuServiceInterface= new MenuService();
+        logServiceInterface= new LogService(Game.class);
         setRunning(true);
     }
 
@@ -24,6 +26,7 @@ public class Game implements GameInterface {
 
     @Override
     public void run() {
+        logServiceInterface.info("Program was started at ");
       do {
         menuServiceInterface.getMenu();
         if (!menuServiceInterface.isActive()){
@@ -34,6 +37,7 @@ public class Game implements GameInterface {
 
     @Override
     public void close() {
+        logServiceInterface.info("Program was close at " );
         setRunning(false);
     }
 }

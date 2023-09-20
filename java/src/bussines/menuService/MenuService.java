@@ -7,24 +7,31 @@ import bussines.infoService.InfoServiceInterface;
 import bussines.logService.LogService;
 import bussines.logService.LogServiceInterface;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenuService implements MenuServiceInterface {
 
-    private InfoServiceInterface infoServiceInterface;
-    private GridServiceInterface gridServiceInterface;
-    private LogServiceInterface logServiceInterface;
+    private final InfoServiceInterface infoServiceInterface;
+    private final GridServiceInterface gridServiceInterface;
+    private final LogServiceInterface logServiceInterface;
+
+
     private boolean isActive;
 
     public MenuService() {
         infoServiceInterface = new InfoService();
         gridServiceInterface = new GridService();
-        logServiceInterface = new LogService();
+        logServiceInterface = new LogService(MenuService.class);
         isActive = true;
     }
 
     @Override
     public void getMenu() {
+
+        logServiceInterface.info("getMenu was called at " );
+
         String[] options = {
                 "Welcome to Conway's game of life.",
                 "Select one of the following options.",
@@ -41,9 +48,15 @@ public class MenuService implements MenuServiceInterface {
 
         switch (input) {
             case "1", "start" -> getGridMenu();
+
             case "2", "info" -> infoServiceInterface.getGameOfLifeInfo();
-            case "3", "close" -> setActive(false);
+
+            case "3", "close" -> {
+                logServiceInterface.info("Program was close at " );
+                setActive(false);
+            }
             default -> {
+                logServiceInterface.info("a valid input was given to the program at " );
                 infoServiceInterface.getInputInfo();
                 System.out.println("start, info or close.");
             }
@@ -51,6 +64,7 @@ public class MenuService implements MenuServiceInterface {
     }
 
     private void printOptions(String[] options) {
+        logServiceInterface.info("PrintOptions method was call at " );
         for (String option : options) {
             System.out.println(option);
         }
@@ -58,7 +72,7 @@ public class MenuService implements MenuServiceInterface {
 
 
     private void getGridMenu() {
-
+        logServiceInterface.info("GetGridMenu was call at " );
         String[] options = {
                 "1) Start a game of life.",
                 "2) Start a game of life, multi generation.",
@@ -75,7 +89,7 @@ public class MenuService implements MenuServiceInterface {
             switch (input) {
                 case "1", "default" -> gridServiceInterface.startDefaultSimulation();
                 case "2", "generations" -> gridServiceInterface.startMultigenerationSimulation();
-                case "3","info"-> infoServiceInterface.getGridInfo();
+                case "3", "info" -> infoServiceInterface.getGridInfo();
                 case "4", "return" -> {
                     return;
                 }

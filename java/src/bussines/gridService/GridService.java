@@ -2,6 +2,8 @@ package bussines.gridService;
 
 import bussines.cellService.CellService;
 import bussines.cellService.CellServiceInterface;
+import bussines.logService.LogService;
+import bussines.logService.LogServiceInterface;
 import dao.Cell;
 import dao.Grid;
 
@@ -11,14 +13,19 @@ public class GridService implements GridServiceInterface {
 
     private Grid currentGrid;
     private final CellServiceInterface cellServiceInterface;
+    private final LogServiceInterface logServiceInterface;
+
 
     public GridService() {
         cellServiceInterface = new CellService();
         currentGrid = new Grid(10, 40);
         populateGrid();
+        logServiceInterface= new LogService(GridService.class);
     }
 
     private void populateGrid() {
+        logServiceInterface.info("populateGrid was call at ");
+
         for (int i = 0; i < currentGrid.getRows(); i++) {
             for (int j = 0; j < currentGrid.getCols(); j++) {
                 currentGrid.getCellGrid()[i][j] = cellServiceInterface.makeCell();
@@ -27,12 +34,15 @@ public class GridService implements GridServiceInterface {
     }
 
     private void getNextGeneration(){
+        logServiceInterface.info("getNextGeneration was call at ");
 
         currentGrid=getNewGeneration();
 
     }
 
     private Grid getNewGeneration(){
+        logServiceInterface.info("getNewGeneration was call at ");
+
         Grid oldGrid = new Grid(currentGrid.getCellGrid());
         Grid newGrid = new Grid(currentGrid.getRows(), currentGrid.getCols());
         int checkSum=0;
@@ -61,6 +71,7 @@ public class GridService implements GridServiceInterface {
 
 
     private int countNeighbours(Grid grid, int col, int row) {
+        logServiceInterface.info("countNeighbours was call at ");
         int checkSum = 0;
         Cell[][] cellGrid = grid.getCellGrid();
         int numRows = grid.getRows();
@@ -79,6 +90,7 @@ public class GridService implements GridServiceInterface {
 
     @Override
     public void startDefaultSimulation() {
+        logServiceInterface.info("startDefaultSimulation was call at ");
         print(currentGrid);
         for (int i = 0; i < 5 ; i++) {
             getNextGeneration();
@@ -88,7 +100,7 @@ public class GridService implements GridServiceInterface {
 
     @Override
     public void startMultigenerationSimulation() {
-
+        logServiceInterface.info("StartMulti was call at ");
         System.out.println("Please enter the number of generations: ");
         Scanner scanner= new Scanner(System.in);
 
@@ -112,6 +124,8 @@ public class GridService implements GridServiceInterface {
 
 
     private void print(Grid grid) {
+        logServiceInterface.info("print was call at ");
+
         System.out.println("------- Start of this Generation -------");
 
         for (int i = 0; i < grid.getRows() ; i++) {

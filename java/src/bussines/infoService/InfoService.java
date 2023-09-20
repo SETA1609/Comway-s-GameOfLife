@@ -1,8 +1,19 @@
 package bussines.infoService;
 
+import bussines.logService.LogService;
+import bussines.logService.LogServiceInterface;
+
 public class InfoService implements InfoServiceInterface {
+
+    private final LogServiceInterface logServiceInterface;
+
+    public InfoService() {
+        logServiceInterface=new LogService(InfoService.class);
+    }
+
     @Override
     public void getInputInfo() {
+        logServiceInterface.info("getInputInfo was call at ");
         String[] allInfo = {
                 "Ups! Something just went wrong with your input :(",
                 "please use the the number you want to use as input or use ",
@@ -13,6 +24,7 @@ public class InfoService implements InfoServiceInterface {
 
     @Override
     public void getGameOfLifeInfo() {
+        logServiceInterface.info("getGameOfLifeInfo was call at ");
         String[] allInfo = {
                 "Conway's Game of Life is a cellular automaton invented by mathematician John Conway in 1970.",
                 "It consists of a grid of cells, each of which can be in one of two states: alive or dead.",
@@ -28,6 +40,7 @@ public class InfoService implements InfoServiceInterface {
 
     @Override
     public void getGridInfo() {
+        logServiceInterface.info("getGridInfo was call at ");
         String[] allInfo = {
                 "Welcome to the simulation menu",
                 "you can select to do a default simulation with 5 generations or",
@@ -38,6 +51,7 @@ public class InfoService implements InfoServiceInterface {
     }
 
     private void printInfo(String[] infoToPrint) {
+        logServiceInterface.info("printInfo was call at ");
         for (String info : infoToPrint) {
             System.out.println(info);
         }
